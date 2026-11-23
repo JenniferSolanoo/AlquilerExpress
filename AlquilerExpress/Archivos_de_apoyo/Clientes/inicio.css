@@ -1,0 +1,606 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;600&display=swap');
+
+/* =========================================
+   ALQUILEREXPRESS - INICIO DE SESIÓN
+   DISEÑO PREMIUM DIVIDIDO
+========================================= */
+
+/* ESTILOS GENERALES */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #FFFFFF;
+    min-height: 100vh;
+    padding: 0;
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+========================================= */
+
+.inicio:not(.crear-cuenta) {
+    position: relative;
+
+    width: 100%;
+    max-width: none;
+    min-height: 100vh;
+
+    padding: 100px 7% 70px 49%;
+
+    background: linear-gradient(
+        to right,
+        #F7F2EE 0%,
+        #F7F2EE 43%,
+        #FFFFFF 43%,
+        #FFFFFF 100%
+    );
+
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+
+    text-align: left;
+}
+
+/* =========================================
+   LOGOTIPO GRANDE - LADO IZQUIERDO
+========================================= */
+
+.inicio:not(.crear-cuenta) .logo {
+    position: absolute;
+
+    top: 15%;
+    left: 4%;
+
+    width: 35%;
+    max-width: 540px;
+    height: auto;
+
+    margin: 0;
+
+    object-fit: contain;
+}
+
+/* =========================================
+   FRASE PRINCIPAL - IZQUIERDA
+========================================= */
+
+.inicio:not(.crear-cuenta)::before {
+    content: "Una nueva forma de viajar.";
+
+    position: absolute;
+
+    top: 55%;
+    left: 4%;
+
+    width: 35%;
+
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(24px, 2.8vw, 43px);
+    font-style: italic;
+    font-weight: 400;
+
+    color: #8F2846;
+
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* FRASE SECUNDARIA */
+
+.inicio:not(.crear-cuenta)::after {
+    content: "Elegancia, comodidad y confianza\A para cada trayecto.\A\A TEGUCIGALPA · HONDURAS";
+
+    white-space: pre-line;
+
+    position: absolute;
+
+    top: 70%;
+    left: 5%;
+
+    width: 33%;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(12px, 1.3vw, 19px);
+    font-weight: 400;
+
+    color: #49343E;
+
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* =========================================
+   TITULO - BIENVENIDO/A
+========================================= */
+
+.inicio:not(.crear-cuenta) h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+
+    font-size: clamp(34px, 3.5vw, 54px);
+    font-weight: 600;
+
+    color: #8F2846;
+
+    text-align: center;
+    letter-spacing: 0;
+
+    margin-bottom: 45px;
+}
+
+/* SUBTITULO DE BIENVENIDA */
+
+.inicio:not(.crear-cuenta) h1::after {
+    content: "Ingresa tus datos para continuar.";
+
+    display: block;
+
+    margin-top: 14px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+
+    color: #76544D;
+}
+
+/* =========================================
+   FORMULARIO
+========================================= */
+
+.inicio:not(.crear-cuenta) form {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 610px;
+
+    margin: 0 auto;
+    gap: 15px;
+
+    text-align: left;
+}
+
+/* ETIQUETAS */
+
+.inicio:not(.crear-cuenta) label {
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #49343E;
+}
+
+/* =========================================
+   CAMPOS DE TEXTO
+========================================= */
+
+.inicio:not(.crear-cuenta) input {
+    width: 100%;
+    height: 54px;
+
+    padding: 0 18px;
+
+    background: #FFFCFA;
+
+    border: 1px solid #E5D5D7;
+    border-radius: 11px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+
+    color: #49343E;
+
+    outline: none;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+/* PLACEHOLDER */
+
+.inicio:not(.crear-cuenta) input::placeholder {
+    color: #A99DA0;
+}
+
+/* EFECTO AL SELECCIONAR */
+
+.inicio:not(.crear-cuenta) input:focus {
+    background: #FFFFFF;
+
+    border-color: #B96D83;
+
+    box-shadow:
+        0 0 0 3px rgba(185, 109, 131, 0.09);
+}
+
+/* =========================================
+   CONTRASEÑA
+========================================= */
+
+.inicio:not(.crear-cuenta) .campo-contrasena {
+    position: relative;
+    width: 100%;
+}
+
+.inicio:not(.crear-cuenta) .campo-contrasena input {
+    width: 100%;
+    padding-right: 55px;
+}
+
+/* BOTÓN MOSTRAR CONTRASEÑA */
+
+.inicio:not(.crear-cuenta) .ver-contrasena {
+    position: absolute;
+
+    top: 50%;
+    right: 13px;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+    margin: 0;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    color: #76544D;
+
+    cursor: pointer;
+}
+
+.inicio:not(.crear-cuenta) .ver-contrasena:hover {
+    background: transparent;
+    box-shadow: none;
+
+    color: #8F2846;
+
+    transform: translateY(-50%);
+}
+
+.inicio:not(.crear-cuenta) .ver-contrasena:active {
+    transform: translateY(-50%);
+}
+
+/* ICONOS */
+
+.ver-contrasena svg {
+    width: 21px;
+    height: 21px;
+}
+
+.icono-ocultar {
+    display: none;
+}
+
+.ver-contrasena.activa .icono-mostrar {
+    display: none;
+}
+
+.ver-contrasena.activa .icono-ocultar {
+    display: block;
+}
+
+/* =========================================
+   BOTÓN INICIAR SESIÓN
+========================================= */
+
+.inicio:not(.crear-cuenta) button[type="submit"] {
+    width: 100%;
+    height: 58px;
+
+    margin-top: 22px;
+    padding: 0 20px;
+
+    background: #8F2846;
+
+    border: none;
+    border-radius: 11px;
+
+    color: #FFFFFF;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.inicio:not(.crear-cuenta) button[type="submit"]:hover {
+    background: #742039;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 18px rgba(143, 40, 70, 0.14);
+}
+
+.inicio:not(.crear-cuenta) button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* =========================================
+   CREAR CUENTA
+========================================= */
+
+.inicio:not(.crear-cuenta) .registro {
+    width: 100%;
+    max-width: 610px;
+
+    margin: 35px auto 0;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #EDE3E3;
+
+    text-align: center;
+}
+
+.inicio:not(.crear-cuenta) .registro p {
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 13px;
+    color: #76544D;
+
+    margin-bottom: 10px;
+}
+
+.inicio:not(.crear-cuenta) .registro a {
+    display: inline-block;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #8F2846;
+
+    text-decoration: none;
+
+    transition: color 0.25s ease;
+}
+
+.inicio:not(.crear-cuenta) .registro a:hover {
+    color: #B96D83;
+    text-decoration: underline;
+}
+
+/* =========================================
+   ACCESO ADMINISTRADOR
+========================================= */
+
+.inicio:not(.crear-cuenta) .administrador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 610px;
+
+    margin: 25px auto 0;
+    padding: 12px;
+
+    background: transparent;
+
+    border: 1px solid #EDE3E3;
+    border-radius: 10px;
+
+    color: #76544D;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.inicio:not(.crear-cuenta) .administrador:hover {
+    background: #FFFCFA;
+    border-color: #B96D83;
+
+    color: #8F2846;
+}
+
+/* =========================================
+   PANTALLAS MEDIANAS
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .inicio:not(.crear-cuenta) {
+        padding-left: 47%;
+        padding-right: 5%;
+    }
+
+    .inicio:not(.crear-cuenta) .logo {
+        left: 3%;
+        width: 36%;
+    }
+
+    .inicio:not(.crear-cuenta)::before {
+        left: 3%;
+        width: 36%;
+        top: 54%;
+    }
+
+    .inicio:not(.crear-cuenta)::after {
+        left: 3%;
+        width: 36%;
+        top: 69%;
+    }
+}
+
+/* =========================================
+   TABLETS Y CELULARES
+========================================= */
+
+@media (max-width: 850px) {
+
+    body {
+        background: #FFFFFF;
+    }
+
+    .inicio:not(.crear-cuenta) {
+        width: 100%;
+        min-height: 100vh;
+
+        padding: 40px 7% 55px;
+
+        background: #FFFFFF;
+
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+
+        justify-content: flex-start;
+    }
+
+    /* LOGO ARRIBA DEL FORMULARIO */
+
+    .inicio:not(.crear-cuenta) .logo {
+        position: static;
+
+        display: block;
+
+        width: 280px;
+        max-width: 80%;
+        height: auto;
+
+        margin: 0 auto 35px;
+    }
+
+    /* OCULTAR FRASES DECORATIVAS */
+
+    .inicio:not(.crear-cuenta)::before,
+    .inicio:not(.crear-cuenta)::after {
+        display: none;
+    }
+
+    .inicio:not(.crear-cuenta) h1 {
+        font-size: 35px;
+        margin-bottom: 35px;
+    }
+
+    .inicio:not(.crear-cuenta) form {
+        max-width: 570px;
+    }
+
+}
+
+/* =========================================
+   CELULARES PEQUEÑOS
+========================================= */
+
+@media (max-width: 480px) {
+
+    .inicio:not(.crear-cuenta) {
+        padding: 30px 22px 45px;
+    }
+
+    .inicio:not(.crear-cuenta) .logo {
+        width: 225px;
+        margin-bottom: 25px;
+    }
+
+    .inicio:not(.crear-cuenta) h1 {
+        font-size: 30px;
+    }
+
+    .inicio:not(.crear-cuenta) h1::after {
+        font-size: 12px;
+    }
+
+    .inicio:not(.crear-cuenta) form {
+        gap: 13px;
+    }
+
+    .inicio:not(.crear-cuenta) input {
+        height: 51px;
+        font-size: 13px;
+    }
+
+    .inicio:not(.crear-cuenta) label {
+        font-size: 13px;
+    }
+
+    .inicio:not(.crear-cuenta) button[type="submit"] {
+        height: 54px;
+        font-size: 14px;
+    }
+}
+
+/* AJUSTES DEL DISEÑO PREMIUM */
+
+
+@media (min-width: 851px) {
+
+    /* LOGOTIPO */
+    .inicio:not(.crear-cuenta) .logo {
+        top: 14%;
+        left: 5%;
+        width: 33%;
+        max-height: 35vh;
+        object-fit: contain;
+    }
+
+    /* FRASE PRINCIPAL */
+    .inicio:not(.crear-cuenta)::before {
+        top: 51%;
+        left: 4%;
+        width: 35%;
+
+        font-size: clamp(24px, 2.2vw, 34px);
+        line-height: 1.3;
+        text-align: center;
+    }
+
+    /* FRASE SECUNDARIA Y UBICACION */
+    .inicio:not(.crear-cuenta)::after {
+        top: 65%;
+        left: 5%;
+        width: 33%;
+
+        font-size: clamp(12px, 1.05vw, 16px);
+        line-height: 1.8;
+        text-align: center;
+    }
+
+    /* TITULO DEL LOGIN */
+    .inicio:not(.crear-cuenta) h1 {
+        font-size: clamp(32px, 2.8vw, 44px);
+        margin-bottom: 38px;
+    }
+}

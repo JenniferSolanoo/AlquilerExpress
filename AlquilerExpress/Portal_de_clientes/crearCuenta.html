@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlquilerExpress | Crear cuenta</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../Archivos_de_apoyo/Clientes/inicio.css">
+    <link rel="stylesheet" href="../Archivos_de_apoyo/Clientes/crearCuenta.css">
+
+    <script src="../Archivos_de_apoyo/Javascript/Clientes/crearCuenta.js" defer></script>
+    <script src="../Archivos_de_apoyo/Javascript/Clientes/contrasena_inicio_logo.js" defer></script>
+</head>
+<body>
+
+
+    <main class="inicio crear-cuenta">
+
+        <!-- PANEL IZQUIERDO -->
+        <aside class="panel-marca">
+            <img src="../Archivos_de_apoyo/Imagenes/Logos/AlquilerExpress_Logotipo.png"
+                 alt="Logo AlquilerExpress" class="logo">
+
+            <div class="marca-textos">
+                <h2>Una nueva forma de viajar.</h2>
+                <p>Elegancia, comodidad y confianza para cada trayecto.</p>
+                <span>TEGUCIGALPA · HONDURAS</span>
+            </div>
+        </aside>
+
+        <!-- PANEL DERECHO -->
+        <section class="panel-formulario">
+            <h1>CREAR CUENTA</h1>
+            <p class="subtitulo">Completa tus datos para registrarte en AlquilerExpress.</p>
+
+            <form id="formRegistro" method="post">
+                <div class="campo">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre"
+                           autocomplete="given-name" required>
+                </div>
+
+                <div class="campo">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido"
+                           autocomplete="family-name" required>
+                </div>
+
+                <div class="campo">
+                    <label for="sexo">Sexo:</label>
+                    <select id="sexo" name="sexo" required>
+                        <option value="" selected disabled>Seleccione una opción</option>
+                        <option value="femenino">Femenino</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="no_indica">Prefiero no indicarlo</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="nacionalidad">Nacionalidad:</label>
+                    <select id="nacionalidad" name="nacionalidad" required>
+                        <option value="" selected disabled>Seleccione su nacionalidad</option>
+                        <option value="hondurena">Hondureño/a</option>
+                        <option value="extranjera">Extranjero/a</option>
+                    </select>
+                </div>
+
+                <!-- DOCUMENTO HONDUREÑO -->
+                <div class="campo" id="campoDNI" hidden>
+                    <label for="dni">Número de identidad (DNI):</label>
+                    <input type="text" id="dni" name="dni" placeholder="Ingrese los 13 dígitos"
+                           inputmode="numeric" pattern="[0-9]{13}" maxlength="13"
+                           autocomplete="off" disabled>
+                </div>
+
+                <!-- DOCUMENTOS EXTRANJEROS -->
+                <div id="camposExtranjero" hidden>
+                    <div class="campo">
+                        <label for="pasaporte">Número de pasaporte:</label>
+                        <input type="text" id="pasaporte" name="pasaporte"
+                               placeholder="Ingrese su número de pasaporte" autocomplete="off" disabled>
+                    </div>
+
+                    <div class="campo">
+                        <label for="pais">País de emisión del pasaporte:</label>
+                        <select id="pais" name="pais" disabled>
+                            <option value="" selected disabled>Seleccione un país</option>
+                            <option>Afganistán</option>
+                            <option>Albania</option>
+                            <option>Alemania</option>
+                            <option>Andorra</option>
+                            <option>Angola</option>
+                            <option>Antigua y Barbuda</option>
+                            <option>Arabia Saudita</option>
+                            <option>Argelia</option>
+                            <option>Argentina</option>
+                            <option>Armenia</option>
+                            <option>Australia</option>
+                            <option>Austria</option>
+                            <option>Azerbaiyán</option>
+                            <option>Bahamas</option>
+                            <option>Bangladés</option>
+                            <option>Barbados</option>
+                            <option>Baréin</option>
+                            <option>Bélgica</option>
+                            <option>Belice</option>
+                            <option>Benín</option>
+                            <option>Bielorrusia</option>
+                            <option>Birmania (Myanmar)</option>
+                            <option>Bolivia</option>
+                            <option>Bosnia y Herzegovina</option>
+                            <option>Botsuana</option>
+                            <option>Brasil</option>
+                            <option>Brunéi</option>
+                            <option>Bulgaria</option>
+                            <option>Burkina Faso</option>
+                            <option>Burundi</option>
+                            <option>Bután</option>
+                            <option>Cabo Verde</option>
+                            <option>Camboya</option>
+                            <option>Camerún</option>
+                            <option>Canadá</option>
+                            <option>Catar</option>
+                            <option>Chad</option>
+                            <option>Chile</option>
+                            <option>China</option>
+                            <option>Chipre</option>
+                            <option>Colombia</option>
+                            <option>Comoras</option>
+                            <option>Congo (República del Congo)</option>
+                            <option>Corea del Norte</option>
+                            <option>Corea del Sur</option>
+                            <option>Costa de Marfil</option>
+                            <option>Costa Rica</option>
+                            <option>Croacia</option>
+                            <option>Cuba</option>
+                            <option>Dinamarca</option>
+                            <option>Dominica</option>
+                            <option>Ecuador</option>
+                            <option>Egipto</option>
+                            <option>El Salvador</option>
+                            <option>Emiratos Árabes Unidos</option>
+                            <option>Eritrea</option>
+                            <option>Eslovaquia</option>
+                            <option>Eslovenia</option>
+                            <option>España</option>
+                            <option>Estados Unidos</option>
+                            <option>Estonia</option>
+                            <option>Esuatini</option>
+                            <option>Etiopía</option>
+                            <option>Fiyi</option>
+                            <option>Filipinas</option>
+                            <option>Finlandia</option>
+                            <option>Francia</option>
+                            <option>Gabón</option>
+                            <option>Gambia</option>
+                            <option>Georgia</option>
+                            <option>Ghana</option>
+                            <option>Granada</option>
+                            <option>Grecia</option>
+                            <option>Guatemala</option>
+                            <option>Guinea</option>
+                            <option>Guinea-Bisáu</option>
+                            <option>Guinea Ecuatorial</option>
+                            <option>Guyana</option>
+                            <option>Haití</option>
+                            <option>Honduras</option>
+                            <option>Hungría</option>
+                            <option>India</option>
+                            <option>Indonesia</option>
+                            <option>Irak</option>
+                            <option>Irán</option>
+                            <option>Irlanda</option>
+                            <option>Islandia</option>
+                            <option>Islas Marshall</option>
+                            <option>Islas Salomón</option>
+                            <option>Israel</option>
+                            <option>Italia</option>
+                            <option>Jamaica</option>
+                            <option>Japón</option>
+                            <option>Jordania</option>
+                            <option>Kazajistán</option>
+                            <option>Kenia</option>
+                            <option>Kirguistán</option>
+                            <option>Kiribati</option>
+                            <option>Kuwait</option>
+                            <option>Laos</option>
+                            <option>Lesoto</option>
+                            <option>Letonia</option>
+                            <option>Líbano</option>
+                            <option>Liberia</option>
+                            <option>Libia</option>
+                            <option>Liechtenstein</option>
+                            <option>Lituania</option>
+                            <option>Luxemburgo</option>
+                            <option>Macedonia del Norte</option>
+                            <option>Madagascar</option>
+                            <option>Malasia</option>
+                            <option>Malaui</option>
+                            <option>Maldivas</option>
+                            <option>Malí</option>
+                            <option>Malta</option>
+                            <option>Marruecos</option>
+                            <option>Mauricio</option>
+                            <option>Mauritania</option>
+                            <option>México</option>
+                            <option>Micronesia</option>
+                            <option>Moldavia</option>
+                            <option>Mónaco</option>
+                            <option>Mongolia</option>
+                            <option>Montenegro</option>
+                            <option>Mozambique</option>
+                            <option>Namibia</option>
+                            <option>Nauru</option>
+                            <option>Nepal</option>
+                            <option>Nicaragua</option>
+                            <option>Níger</option>
+                            <option>Nigeria</option>
+                            <option>Noruega</option>
+                            <option>Nueva Zelanda</option>
+                            <option>Omán</option>
+                            <option>Países Bajos</option>
+                            <option>Pakistán</option>
+                            <option>Palaos</option>
+                            <option>Palestina</option>
+                            <option>Panamá</option>
+                            <option>Papúa Nueva Guinea</option>
+                            <option>Paraguay</option>
+                            <option>Perú</option>
+                            <option>Polonia</option>
+                            <option>Portugal</option>
+                            <option>Reino Unido</option>
+                            <option>República Centroafricana</option>
+                            <option>República Checa (Chequia)</option>
+                            <option>República Democrática del Congo</option>
+                            <option>República Dominicana</option>
+                            <option>Ruanda</option>
+                            <option>Rumania</option>
+                            <option>Rusia</option>
+                            <option>Samoa</option>
+                            <option>San Cristóbal y Nieves</option>
+                            <option>San Marino</option>
+                            <option>San Vicente y las Granadinas</option>
+                            <option>Santa Lucía</option>
+                            <option>Santo Tomé y Príncipe</option>
+                            <option>Senegal</option>
+                            <option>Serbia</option>
+                            <option>Seychelles</option>
+                            <option>Sierra Leona</option>
+                            <option>Singapur</option>
+                            <option>Siria</option>
+                            <option>Somalia</option>
+                            <option>Sri Lanka</option>
+                            <option>Sudáfrica</option>
+                            <option>Sudán</option>
+                            <option>Sudán del Sur</option>
+                            <option>Suecia</option>
+                            <option>Suiza</option>
+                            <option>Surinam</option>
+                            <option>Tailandia</option>
+                            <option>Tanzania</option>
+                            <option>Tayikistán</option>
+                            <option>Timor Oriental</option>
+                            <option>Togo</option>
+                            <option>Tonga</option>
+                            <option>Trinidad y Tobago</option>
+                            <option>Túnez</option>
+                            <option>Turkmenistán</option>
+                            <option>Turquía</option>
+                            <option>Tuvalu</option>
+                            <option>Ucrania</option>
+                            <option>Uganda</option>
+                            <option>Uruguay</option>
+                            <option>Uzbekistán</option>
+                            <option>Vanuatu</option>
+                            <option>Vaticano (Santa Sede)</option>
+                            <option>Venezuela</option>
+                            <option>Vietnam</option>
+                            <option>Yemen</option>
+                            <option>Yibuti</option>
+                            <option>Zambia</option>
+                            <option>Zimbabue</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="licencia">Número de licencia de conducir:</label>
+                    <input type="text" id="licencia" name="licencia"
+                           placeholder="Ingrese su número de licencia" autocomplete="off" required>
+                </div>
+
+                <div class="campo">
+                    <label for="telefono">Número de teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono"
+                           placeholder="Ej. +504 9999-9999" autocomplete="tel" required>
+                </div>
+
+                <div class="campo">
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo"
+                           placeholder="ejemplo@correo.com" autocomplete="email" required>
+                </div>
+
+                <div class="campo">
+                    <label for="contrasena">Contraseña:</label>
+                    <div class="campo-contrasena">
+                        <input type="password" id="contrasena" name="contrasena"
+                               placeholder="Ingrese su contraseña" minlength="8"
+                               autocomplete="new-password" required>
+                        <button type="button" class="ver-contrasena"
+                                aria-label="Mostrar contraseña" aria-pressed="false">
+                            <svg class="icono-mostrar" width="22" height="22" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <svg class="icono-ocultar" width="22" height="22" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M10.6 5.1A11 11 0 0 1 12 5c6.5 0 10 7 10 7a14 14 0 0 1-4 4.7"/>
+                                <path d="M6.5 6.5C3.5 8.5 2 12 2 12s3.5 7 10 7a10 10 0 0 0 5-1.3"/>
+                                <path d="M10 10a3 3 0 0 0 4 4"/>
+                                <path d="M3 3l18 18"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TÉRMINOS Y POLÍTICA DE PRIVACIDAD -->
+                <div class="terminos">
+
+                    <input
+                        type="checkbox"
+                        id="aceptarTerminos"
+                        name="aceptarTerminos"
+                        required
+                    >
+
+                    <label for="aceptarTerminos">
+                        He leído y acepto los
+
+                        <a
+                            href="terminosPrivacidad.html"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Términos y condiciones y la Política de privacidad
+                        </a>
+
+                        de AlquilerExpress.
+                    </label>
+
+                </div>
+
+
+
+                <button type="submit">Crear cuenta</button>
+                <p id="mensajeRegistro" role="status" aria-live="polite"></p>
+            </form>
+
+            <div class="registro">
+                <p>¿Ya tienes una cuenta?</p>
+                <a href="inicio.html">Iniciar sesión</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

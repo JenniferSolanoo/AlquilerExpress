@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AlquilerExpress | Portal del cliente</title>
+
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="../Archivos_de_apoyo/Clientes/portalClientes.css">
+
+    <!-- ICONOS -->
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="encabezado">
+
+        <div class="encabezado-izquierda">
+
+            <button type="button" class="boton-menu" aria-label="Abrir menú">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <a href="portalCliente.html" class="marca">
+                <img
+                    src="../Archivos_de_apoyo/Imagenes/Logos/AlquilerExpress_Logotipo.png"
+                    alt="Logo AlquilerExpress"
+                    class="logo">
+            </a>
+
+        </div>
+
+        <nav class="encabezado-derecha" aria-label="Opciones del cliente">
+
+            <a href="favoritos.html" class="boton-favoritos">
+                <i data-lucide="heart"></i>
+                <span>Favoritos</span>
+            </a>
+
+            <a href="misReservas.html" class="boton-reservas">
+                <i data-lucide="calendar-check"></i>
+                <span>Mis reservas</span>
+            </a>
+
+            <a href="miPerfil.html" class="boton-perfil">
+                <i data-lucide="user-round"></i>
+                <span>Mi perfil</span>
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- MENU LATERAL -->
+    <aside class="menu-lateral">
+
+        <nav aria-label="Menú principal">
+
+            <a href="portalCliente.html" class="menu-opcion activo">
+                <i data-lucide="house"></i>
+                <span>Inicio</span>
+            </a>
+
+            <a href="#buscar-autos" class="menu-opcion">
+                <i data-lucide="search"></i>
+                <span>Buscar vehículos</span>
+            </a>
+
+            <a href="#vehiculos" class="menu-opcion">
+                <i data-lucide="car-front"></i>
+                <span>Vehículos disponibles</span>
+            </a>
+
+            <a href="misReservas.html" class="menu-opcion">
+                <i data-lucide="calendar-days"></i>
+                <span>Mis reservas</span>
+            </a>
+
+            <a href="favoritos.html" class="menu-opcion">
+                <i data-lucide="heart"></i>
+                <span>Favoritos</span>
+            </a>
+
+            <a href="miPerfil.html" class="menu-opcion">
+                <i data-lucide="user-round"></i>
+                <span>Mi perfil</span>
+            </a>
+
+        </nav>
+
+        <div class="menu-inferior">
+
+            <a href="ayuda.html" class="menu-opcion">
+                <i data-lucide="circle-help"></i>
+                <span>Ayuda</span>
+            </a>
+
+            <a href="inicio.html" class="menu-opcion">
+                <i data-lucide="log-out"></i>
+                <span>Cerrar sesión</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido-principal">
+
+        <!-- PORTADA -->
+        <section class="portada" id="buscar-autos">
+
+            <div class="portada-contenido">
+
+                <p class="portada-etiqueta">
+                    ALQUILER DE VEHÍCULOS EN HONDURAS
+                </p>
+
+                <h1>Encuentra el auto ideal para tu próximo viaje</h1>
+
+                <p class="portada-descripcion">
+                    Descubre nuestra selección de vehículos y disfruta
+                    de una experiencia de alquiler cómoda, segura y confiable.
+                </p>
+
+
+                <!-- BUSCADOR -->
+                <div class="contenedor-buscador">
+
+                    <h2>Busca tu próximo vehículo</h2>
+
+                    <form action="" method="get" class="formulario-busqueda">
+
+                        <!-- LUGAR DE RECOGIDA -->
+                        <div class="campo-busqueda">
+
+                            <label for="recogida">
+                                Lugar de recogida
+                            </label>
+
+                            <div class="entrada-icono">
+
+                                <i data-lucide="map-pin"></i>
+
+                                <select id="recogida" name="recogida" required>
+
+                                    <option value="" selected disabled>
+                                        Seleccione una ubicación
+                                    </option>
+
+                                    <!-- TEGUCIGALPA -->
+                                    <optgroup label="Tegucigalpa">
+
+                                        <option value="centro-tegucigalpa">
+                                            Centro de Tegucigalpa
+                                        </option>
+
+                                        <option value="boulevard-morazan">
+                                            Bulevar Morazán
+                                        </option>
+
+                                        <option value="colonia-palmira">
+                                            Colonia Palmira
+                                        </option>
+
+                                        <option value="lomas-guijarro">
+                                            Lomas del Guijarro
+                                        </option>
+
+                                        <option value="colonia-kennedy">
+                                            Colonia Kennedy
+                                        </option>
+
+                                        <option value="multiplaza">
+                                            Mall Multiplaza
+                                        </option>
+
+                                        <option value="city-mall">
+                                            City Mall
+                                        </option>
+
+                                        <option value="toncontin">
+                                            Aeropuerto Toncontín
+                                        </option>
+
+                                    </optgroup>
+
+
+                                    <!-- COMAYAGÜELA -->
+                                    <optgroup label="Comayagüela">
+
+                                        <option value="centro-comayaguela">
+                                            Centro de Comayagüela
+                                        </option>
+
+                                        <option value="mercado-zonal-belen">
+                                            Mercado Zonal Belén
+                                        </option>
+
+                                        <option value="boulevard-norte">
+                                            Bulevar del Norte
+                                        </option>
+
+                                        <option value="colonia-carrizal">
+                                            Colonia El Carrizal
+                                        </option>
+
+                                        <option value="colonia-torocagua">
+                                            Colonia Torocagua
+                                        </option>
+
+                                        <option value="flor-del-campo">
+                                            Colonia Flor del Campo
+                                        </option>
+
+                                    </optgroup>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FECHA DE RECOGIDA -->
+                        <div class="campo-busqueda">
+
+                            <label for="fechaRecogida">
+                                Fecha de recogida
+                            </label>
+
+                            <input
+                                type="date"
+                                id="fechaRecogida"
+                                name="fechaRecogida"
+                                required>
+
+                        </div>
+
+
+                        <!-- HORA DE RECOGIDA -->
+                        <div class="campo-busqueda">
+
+                            <label for="horaRecogida">
+                                Hora de recogida
+                            </label>
+
+                            <input
+                                type="time"
+                                id="horaRecogida"
+                                name="horaRecogida"
+                                value="12:00"
+                                required>
+
+                        </div>
+
+
+                        <!-- FECHA DE DEVOLUCION -->
+                        <div class="campo-busqueda">
+
+                            <label for="fechaDevolucion">
+                                Fecha de devolución
+                            </label>
+
+                            <input
+                                type="date"
+                                id="fechaDevolucion"
+                                name="fechaDevolucion"
+                                required>
+
+                        </div>
+
+
+                        <!-- HORA DE DEVOLUCION -->
+                        <div class="campo-busqueda">
+
+                            <label for="horaDevolucion">
+                                Hora de devolución
+                            </label>
+
+                            <input
+                                type="time"
+                                id="horaDevolucion"
+                                name="horaDevolucion"
+                                value="12:00"
+                                required>
+
+                        </div>
+
+
+                        <!-- EDAD DEL CONDUCTOR -->
+                        <div class="campo-busqueda">
+
+                            <label for="edadConductor">
+                                Edad del conductor
+                            </label>
+
+                            <select id="edadConductor" name="edadConductor" required>
+
+                                <option value="" selected disabled>
+                                    Seleccione su edad
+                                </option>
+
+                                <option value="18-20">18 a 20 años</option>
+                                <option value="21-24">21 a 24 años</option>
+                                <option value="25-29">25 a 29 años</option>
+                                <option value="30-65">30 a 65 años</option>
+                                <option value="66+">66 años o más</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- BOTON BUSCAR -->
+                        <button type="submit" class="boton-buscar">
+                            <i data-lucide="search"></i>
+                            Buscar vehículos
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BENEFICIOS -->
+        <section class="beneficios">
+
+            <article class="beneficio">
+
+                <i data-lucide="shield-check"></i>
+
+                <div>
+                    <h3>Alquiler seguro</h3>
+                    <p>Tu tranquilidad es nuestra prioridad.</p>
+                </div>
+
+            </article>
+
+            <article class="beneficio">
+
+                <i data-lucide="wallet"></i>
+
+                <div>
+                    <h3>Precios accesibles</h3>
+                    <p>Opciones que se adaptan a tu presupuesto.</p>
+                </div>
+
+            </article>
+
+            <article class="beneficio">
+
+                <i data-lucide="car-front"></i>
+
+                <div>
+                    <h3>Variedad de vehículos</h3>
+                    <p>Encuentra el auto que necesitas.</p>
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- VEHICULOS DISPONIBLES -->
+        <section class="seccion-vehiculos" id="vehiculos">
+
+            <div class="seccion-encabezado">
+
+                <p class="seccion-etiqueta">
+                    NUESTRA FLOTA
+                </p>
+
+                <h2>Vehículos disponibles</h2>
+
+                <p>
+                    Explora los automóviles disponibles
+                    y encuentra el ideal para tu viaje.
+                </p>
+
+            </div>
+
+
+            <!-- LOS VEHICULOS SE CARGARAN DESDE LA BASE DE DATOS -->
+            <div
+                class="contenedor-vehiculos"
+                id="listaVehiculos"
+                aria-live="polite">
+
+            </div>
+
+
+            <!-- MENSAJE CUANDO NO HAYA VEHICULOS -->
+            <div class="mensaje-sin-vehiculos"
+                 id="mensajeSinVehiculos"
+                 hidden>
+
+                <i data-lucide="car-front"></i>
+
+                <h3>No hay vehículos disponibles</h3>
+
+                <p>
+                    No encontramos vehículos disponibles
+                    para las fechas seleccionadas.
+                    Intenta buscar con otras fechas.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECCION FINAL -->
+        <section class="seccion-informacion">
+
+            <h2>Tu próximo viaje comienza aquí</h2>
+
+            <p>
+                Encuentra el vehículo perfecto para cada ocasión
+                y vive la experiencia AlquilerExpress.
+            </p>
+
+            <a href="#buscar-autos" class="boton-explorar">
+                Explorar vehículos
+            </a>
+
+        </section>
+
+
+        <!-- PIE DE PAGINA -->
+        <footer class="pie-pagina">
+
+            <div class="pie-marca">
+
+                <h3>AlquilerExpress</h3>
+
+                <p>Tu camino, nuestra prioridad.</p>
+
+            </div>
+
+            <nav class="pie-enlaces" aria-label="Enlaces informativos">
+
+                <a href="terminosPrivacidad.html">
+                    Términos y condiciones
+                </a>
+
+                <a href="terminosPrivacidad.html">
+                    Política de privacidad
+                </a>
+
+                <a href="ayuda.html">
+                    Centro de ayuda
+                </a>
+
+            </nav>
+
+            <p>
+                &copy; 2026 AlquilerExpress.
+                Todos los derechos reservados.
+            </p>
+
+        </footer>
+
+    </main>
+
+</body>
+</html>

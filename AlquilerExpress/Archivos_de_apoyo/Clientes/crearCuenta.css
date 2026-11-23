@@ -1,0 +1,621 @@
+
+/* ========================================
+   ALQUILEREXPRESS - CREAR CUENTA
+   MISMO DISEÑO QUE INICIO DE SESIÓN
+======================================== */
+
+/* CONTENEDOR GENERAL */
+
+.inicio.crear-cuenta {
+    display: grid;
+    grid-template-columns: 43% 57%;
+    align-items: start;
+
+    width: 100%;
+    max-width: none;
+    min-height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    background: #FFFFFF;
+
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* ========================================
+   PANEL IZQUIERDO
+======================================== */
+
+.crear-cuenta .panel-marca {
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+    height: 100vh;
+    min-height: 0;
+
+    padding: 40px 6%;
+
+    background: #F7F2EE;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 32px;
+    text-align: center;
+}
+
+/* LOGOTIPO */
+
+.crear-cuenta .panel-marca .logo {
+    position: static;
+
+    display: block;
+
+    width: 100%;
+    max-width: 460px;
+    max-height: 38vh;
+    height: auto;
+
+    margin: 0;
+    object-fit: contain;
+}
+
+/* TEXTOS DE MARCA */
+
+.crear-cuenta .marca-textos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-width: 460px;
+
+    gap: 20px;
+}
+
+.crear-cuenta .marca-textos h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+
+    font-size: clamp(24px, 2.3vw, 36px);
+    font-weight: 400;
+    font-style: italic;
+
+    color: #8F2846;
+
+    line-height: 1.3;
+    text-align: center;
+}
+
+.crear-cuenta .marca-textos p {
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: clamp(12px, 1.1vw, 16px);
+    font-weight: 400;
+
+    color: #49343E;
+
+    line-height: 1.8;
+    text-align: center;
+}
+
+.crear-cuenta .marca-textos span {
+    display: block;
+
+    margin-top: 10px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+
+    letter-spacing: 2px;
+    color: #76544D;
+}
+
+/* ========================================
+   PANEL DERECHO
+======================================== */
+
+.crear-cuenta .panel-formulario {
+    width: 100%;
+    min-width: 0;
+    min-height: 100vh;
+
+    padding: 75px clamp(30px, 6vw, 110px);
+
+    background: #FFFFFF;
+}
+
+/* TÍTULO */
+
+.crear-cuenta .panel-formulario h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+
+    font-size: clamp(32px, 3vw, 46px);
+    font-weight: 600;
+
+    color: #8F2846;
+
+    margin: 0 0 12px;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+/* SUBTÍTULO */
+
+.crear-cuenta .subtitulo {
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    color: #76544D;
+
+    line-height: 1.7;
+    text-align: center;
+
+    margin-bottom: 42px;
+}
+
+/* ========================================
+   FORMULARIO
+======================================== */
+
+.crear-cuenta form {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 610px;
+
+    margin: 0 auto;
+    gap: 21px;
+
+    text-align: left;
+}
+
+/* CONTENEDOR DE CAMPOS */
+
+.crear-cuenta .campo {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+/* ETIQUETAS */
+
+.crear-cuenta .campo label {
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #49343E;
+}
+
+/* INPUTS Y SELECTS */
+
+.crear-cuenta .campo input,
+.crear-cuenta .campo select {
+    width: 100%;
+    height: 54px;
+
+    padding: 0 18px;
+
+    background: #FFFCFA;
+
+    border: 1px solid #E5D5D7;
+    border-radius: 11px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+
+    color: #49343E;
+
+    outline: none;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+/* PLACEHOLDER */
+
+.crear-cuenta input::placeholder {
+    color: #A99DA0;
+}
+
+/* FOCUS */
+
+.crear-cuenta .campo input:focus,
+.crear-cuenta .campo select:focus {
+    background: #FFFFFF;
+
+    border-color: #B96D83;
+
+    box-shadow:
+        0 0 0 3px rgba(185, 109, 131, 0.09);
+}
+
+/* SELECTS */
+
+.crear-cuenta select {
+    cursor: pointer;
+}
+
+.crear-cuenta select option {
+    background: #FFFFFF;
+    color: #49343E;
+}
+
+/* ========================================
+   NACIONALIDAD Y DOCUMENTACIÓN
+======================================== */
+
+.crear-cuenta #camposExtranjero {
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+}
+
+/* OCULTAR CAMPOS INACTIVOS */
+
+.crear-cuenta [hidden] {
+    display: none !important;
+}
+
+/* ========================================
+   CAMPO DE CONTRASEÑA
+======================================== */
+
+.crear-cuenta .campo-contrasena {
+    position: relative;
+    width: 100%;
+}
+
+.crear-cuenta .campo-contrasena input {
+    width: 100%;
+    padding-right: 55px;
+}
+
+/* BOTÓN MOSTRAR CONTRASEÑA */
+
+.crear-cuenta .ver-contrasena {
+    position: absolute;
+
+    top: 50%;
+    right: 13px;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+    margin: 0;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    color: #76544D;
+
+    cursor: pointer;
+}
+
+.crear-cuenta .ver-contrasena:hover {
+    color: #8F2846;
+    background: transparent;
+    box-shadow: none;
+
+    transform: translateY(-50%);
+}
+
+.crear-cuenta .ver-contrasena svg {
+    width: 21px;
+    height: 21px;
+}
+
+/* ICONOS DEL OJO */
+
+.crear-cuenta .icono-ocultar {
+    display: none;
+}
+
+.crear-cuenta .ver-contrasena.activa .icono-mostrar {
+    display: none;
+}
+
+.crear-cuenta .ver-contrasena.activa .icono-ocultar {
+    display: block;
+}
+
+/* ========================================
+   TÉRMINOS Y PRIVACIDAD
+======================================== */
+
+.crear-cuenta .terminos {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.crear-cuenta .terminos input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+
+    margin: 2px 0 0;
+    padding: 0;
+
+    flex-shrink: 0;
+
+    accent-color: #8F2846;
+    cursor: pointer;
+}
+
+.crear-cuenta .terminos label {
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 12px;
+    font-weight: 400;
+
+    line-height: 1.7;
+    color: #76544D;
+}
+
+.crear-cuenta .terminos a {
+    color: #8F2846;
+
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.crear-cuenta .terminos a:hover {
+    text-decoration: underline;
+}
+
+/* ========================================
+   BOTÓN CREAR CUENTA
+======================================== */
+
+.crear-cuenta button[type="submit"] {
+    width: 100%;
+    height: 58px;
+
+    margin-top: 12px;
+    padding: 0 20px;
+
+    background: #8F2846;
+
+    border: none;
+    border-radius: 11px;
+
+    color: #FFFFFF;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.crear-cuenta button[type="submit"]:hover {
+    background: #742039;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 18px rgba(143, 40, 70, 0.14);
+}
+
+.crear-cuenta button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   MENSAJE DE REGISTRO
+======================================== */
+
+.crear-cuenta #mensajeRegistro {
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 12px;
+    line-height: 1.6;
+
+    color: #8F2846;
+    text-align: center;
+}
+
+/* ========================================
+   ENLACE INICIAR SESIÓN
+======================================== */
+
+.crear-cuenta .registro {
+    width: 100%;
+    max-width: 610px;
+
+    margin: 35px auto 0;
+    padding-top: 25px;
+
+    border-top: 1px solid #EDE3E3;
+
+    text-align: center;
+}
+
+.crear-cuenta .registro p {
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 13px;
+    color: #76544D;
+
+    margin-bottom: 10px;
+}
+
+.crear-cuenta .registro a {
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #8F2846;
+
+    text-decoration: none;
+}
+
+.crear-cuenta .registro a:hover {
+    color: #B96D83;
+    text-decoration: underline;
+}
+
+/* ========================================
+   PANTALLAS MEDIANAS
+======================================== */
+
+@media (max-width: 1100px) {
+
+    .crear-cuenta .panel-formulario {
+        padding: 65px 6%;
+    }
+
+    .crear-cuenta .panel-marca {
+        padding: 30px 5%;
+    }
+
+    .crear-cuenta .marca-textos {
+        gap: 16px;
+    }
+}
+
+/* ========================================
+   TABLETS Y CELULARES
+======================================== */
+
+@media (max-width: 850px) {
+
+    .inicio.crear-cuenta {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* PANEL SUPERIOR */
+
+    .crear-cuenta .panel-marca {
+        position: static;
+
+        width: 100%;
+        height: auto;
+        min-height: 0;
+
+        padding: 30px 22px;
+
+        gap: 12px;
+    }
+
+    .crear-cuenta .panel-marca .logo {
+        width: 270px;
+        max-width: 85%;
+        max-height: none;
+
+        margin: 0;
+    }
+
+    .crear-cuenta .marca-textos h2 {
+        font-size: 25px;
+    }
+
+    /* OCULTAR TEXTOS SECUNDARIOS EN MÓVIL */
+
+    .crear-cuenta .marca-textos p,
+    .crear-cuenta .marca-textos span {
+        display: none;
+    }
+
+    /* FORMULARIO */
+
+    .crear-cuenta .panel-formulario {
+        width: 100%;
+        min-height: auto;
+
+        padding: 40px 7% 60px;
+    }
+
+    .crear-cuenta .panel-formulario h1 {
+        font-size: 34px;
+    }
+
+    .crear-cuenta .subtitulo {
+        margin-bottom: 32px;
+    }
+}
+
+/* ========================================
+   CELULARES PEQUEÑOS
+======================================== */
+
+@media (max-width: 480px) {
+
+    .crear-cuenta .panel-marca {
+        padding: 24px 20px;
+    }
+
+    .crear-cuenta .panel-marca .logo {
+        width: 225px;
+    }
+
+    .crear-cuenta .marca-textos h2 {
+        font-size: 22px;
+    }
+
+    .crear-cuenta .panel-formulario {
+        padding: 32px 22px 48px;
+    }
+
+    .crear-cuenta .panel-formulario h1 {
+        font-size: 29px;
+    }
+
+    .crear-cuenta .subtitulo {
+        font-size: 12px;
+    }
+
+    .crear-cuenta form {
+        gap: 18px;
+    }
+
+    .crear-cuenta .campo input,
+    .crear-cuenta .campo select {
+        height: 51px;
+        font-size: 13px;
+    }
+
+    .crear-cuenta .campo label {
+        font-size: 13px;
+    }
+
+    .crear-cuenta .terminos label {
+        font-size: 11px;
+    }
+
+    .crear-cuenta button[type="submit"] {
+        height: 54px;
+        font-size: 14px;
+    }
+}
