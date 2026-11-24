@@ -1,0 +1,68 @@
+
+/* ALQUILEREXPRESS - FOTO DE PERFIL */
+
+.perfil-avatar-contenedor {
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.perfil-avatar-contenedor .perfil-avatar {
+    overflow: hidden;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.perfil-avatar-contenedor .perfil-avatar.con-foto {
+    color: transparent !important;
+    text-shadow: none !important;
+}
+
+.perfil-boton-foto {
+    position: absolute;
+    right: -4px;
+    bottom: -4px;
+
+    width: 36px;
+    height: 36px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+
+    background: #945A73;
+    color: #FFFFFF;
+
+    box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+
+    cursor: pointer;
+
+    transition:
+        background 160ms ease,
+        transform 160ms ease;
+}
+
+.perfil-boton-foto:hover {
+    background: #7D4960;
+    transform: translateY(-1px);
+}
+
+.perfil-boton-foto:focus-visible {
+    outline: 3px solid #C99BB0;
+    outline-offset: 3px;
+}
+
+.perfil-boton-foto svg,
+.perfil-boton-foto i {
+    width: 18px;
+    height: 18px;
+}

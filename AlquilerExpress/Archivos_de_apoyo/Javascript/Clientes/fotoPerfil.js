@@ -1,9 +1,5 @@
 
-/*
- PROYECTO: AlquilerExpress
- ARCHIVO: fotoPerfil.js
- DESCRIPCIÓN: Permite cambiar y guardar la foto de perfil.
-*/
+/* ALQUILEREXPRESS - FOTO DE PERFIL */
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -14,11 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const clave = "alquilerexpress_foto_perfil";
 
     if (!avatar || !boton || !selector) {
-        console.warn("Faltan elementos del cambio de foto.");
+        console.error("Faltan elementos para cambiar la foto.");
         return;
     }
 
-    // Mostrar fotografía en el avatar
+    // Mostrar fotografía
     function mostrarFoto(foto) {
         avatar.style.backgroundImage = `url("${foto}")`;
         avatar.classList.add("con-foto");
@@ -31,36 +27,39 @@ document.addEventListener("DOMContentLoaded", () => {
         if (fotoGuardada) {
             mostrarFoto(fotoGuardada);
         }
+
     } catch (error) {
-        console.warn("No se pudo recuperar la fotografía.");
+        console.warn("No se pudo recuperar la foto.");
     }
 
-    // Abrir selector de imágenes
+    // Abrir selector de fotografías
     boton.addEventListener("click", () => {
         selector.click();
     });
 
-    // Seleccionar nueva fotografía
+    // Cuando se selecciona una fotografía
     selector.addEventListener("change", () => {
 
         const archivo = selector.files[0];
 
-        if (!archivo) return;
+        if (!archivo) {
+            return;
+        }
 
-        const formatos = [
+        const formatosPermitidos = [
             "image/jpeg",
             "image/png",
             "image/webp"
         ];
 
-        if (!formatos.includes(archivo.type)) {
+        if (!formatosPermitidos.includes(archivo.type)) {
             alert("Selecciona una imagen JPG, PNG o WEBP.");
             selector.value = "";
             return;
         }
 
         if (archivo.size > 5 * 1024 * 1024) {
-            alert("La imagen no debe superar los 5 MB.");
+            alert("La imagen no puede superar los 5 MB.");
             selector.value = "";
             return;
         }
@@ -74,14 +73,18 @@ document.addEventListener("DOMContentLoaded", () => {
             imagen.onload = () => {
 
                 const canvas = document.createElement("canvas");
-                const contexto = canvas.getContext("2d");
-
-                if (!contexto) return;
 
                 canvas.width = 300;
                 canvas.height = 300;
 
-                // Recortar fotografía al centro
+                const contexto = canvas.getContext("2d");
+
+                if (!contexto) {
+                    alert("No se pudo procesar la fotografía.");
+                    return;
+                }
+
+                // Recortar la imagen al centro
                 const lado = Math.min(
                     imagen.width,
                     imagen.height
@@ -102,18 +105,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     300
                 );
 
+                // Convertir a JPG comprimido
                 const fotoFinal = canvas.toDataURL(
                     "image/jpeg",
                     0.8
                 );
 
+                // Mostrar la fotografía
                 mostrarFoto(fotoFinal);
 
                 // Guardar en el navegador
                 try {
                     localStorage.setItem(clave, fotoFinal);
+
                 } catch (error) {
-                    alert("La foto se muestra, pero no se pudo guardar.");
+                    alert(
+                        "La foto se muestra, pero no se pudo guardar."
+                    );
                 }
 
                 selector.value = "";
@@ -127,9 +135,10 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         lector.onerror = () => {
-            alert("No se pudo leer el archivo.");
+            alert("No se pudo leer la fotografía.");
         };
 
         lector.readAsDataURL(archivo);
     });
+
 });
