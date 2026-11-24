@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 /* =========================================
@@ -21,7 +20,7 @@ html {
 body {
     min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
-    background: #F7F2EE;
+    background: #FFFAFC;
     color: #49343E;
     line-height: 1.8;
 }
@@ -35,7 +34,7 @@ body {
     padding: 18px 7%;
 
     background: #FFFFFF;
-    border-bottom: 1px solid #EDE3E3;
+    border-bottom: 1px solid #E9DCE2;
 }
 
 .legal-header-contenido {
@@ -68,14 +67,14 @@ body {
     font-size: 13px;
     font-weight: 600;
 
-    color: #8F2846;
+    color: #945A73;
     text-decoration: none;
 
     transition: color 0.25s ease;
 }
 
 .volver:hover {
-    color: #B96D83;
+    color: #7D4960;
     text-decoration: underline;
 }
 
@@ -92,7 +91,7 @@ body {
 
     background: #FFFFFF;
 
-    border: 1px solid #EDE3E3;
+    border: 1px solid #E9DCE2;
     border-radius: 14px;
 }
 
@@ -106,10 +105,10 @@ body {
     padding: 25px 30px;
     margin-bottom: 45px;
 
-    background: #FFF7F5;
+    background: #FAEFF4;
 
-    border: 1px solid #E8DADD;
-    border-left: 4px solid #8F2846;
+    border: 1px solid #E7D3DD;
+    border-left: 4px solid #945A73;
     border-radius: 10px;
 
     text-align: center;
@@ -121,7 +120,7 @@ body {
     font-size: 16px;
     font-weight: 600;
 
-    color: #8F2846;
+    color: #945A73;
 
     line-height: 1.8;
 }
@@ -135,7 +134,7 @@ body {
     font-size: 11px;
     font-weight: 400;
 
-    color: #76544D;
+    color: #786A70;
     line-height: 1.6;
 }
 
@@ -149,7 +148,7 @@ body {
     font-size: clamp(30px, 4vw, 46px);
     font-weight: 600;
 
-    color: #8F2846;
+    color: #945A73;
 
     line-height: 1.3;
     text-align: center;
@@ -166,7 +165,7 @@ body {
     font-size: 14px;
     font-weight: 400;
 
-    color: #76544D;
+    color: #786A70;
 
     line-height: 1.8;
     text-align: center;
@@ -190,16 +189,16 @@ body {
 
     padding: 12px 22px;
 
-    background: #FFF7F5;
+    background: #FAEFF4;
 
-    border: 1px solid #E8DADD;
+    border: 1px solid #E7D3DD;
     border-radius: 8px;
 
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     font-weight: 600;
 
-    color: #8F2846;
+    color: #945A73;
     text-decoration: none;
 
     transition:
@@ -209,8 +208,8 @@ body {
 }
 
 .legal-nav a:hover {
-    background: #8F2846;
-    border-color: #8F2846;
+    background: #945A73;
+    border-color: #945A73;
     color: #FFFFFF;
 }
 
@@ -231,12 +230,12 @@ body {
     font-size: 29px;
     font-weight: 600;
 
-    color: #8F2846;
+    color: #945A73;
 
     margin-bottom: 25px;
     padding-bottom: 14px;
 
-    border-bottom: 1px solid #EDE3E3;
+    border-bottom: 1px solid #E9DCE2;
 }
 
 /* SUBTÍTULOS */
@@ -292,13 +291,13 @@ body {
 /* ENLACES */
 
 .legal-section a {
-    color: #8F2846;
+    color: #945A73;
     font-weight: 600;
     text-decoration: underline;
 }
 
 .legal-section a:hover {
-    color: #B96D83;
+    color: #7D4960;
 }
 
 /* =========================================
@@ -311,7 +310,7 @@ body {
 
     margin: 45px 0;
 
-    background: #EDE3E3;
+    background: #E9DCE2;
     border: none;
 }
 
@@ -339,7 +338,7 @@ body {
     padding: 30px 20px;
 
     background: #FFFFFF;
-    border-top: 1px solid #EDE3E3;
+    border-top: 1px solid #E9DCE2;
 
     text-align: center;
 }
@@ -350,7 +349,7 @@ body {
     font-size: 12px;
     font-weight: 400;
 
-    color: #76544D;
+    color: #786A70;
 }
 
 /* =========================================
@@ -358,7 +357,7 @@ body {
 ========================================= */
 
 a:focus-visible {
-    outline: 3px solid #B96D83;
+    outline: 3px solid #C99BB0;
     outline-offset: 4px;
 }
 
