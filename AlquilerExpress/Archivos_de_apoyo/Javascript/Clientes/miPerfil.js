@@ -1,183 +1,152 @@
-
-/* ALQUILEREXPRESS - MI PERFIL */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const clave = "alquilerExpressPerfilDemo";
-
-    const nombresCampos = [
-        "nombre",
-        "apellido",
-        "correo",
-        "telefono",
-        "ciudad",
-        "pais"
-    ];
-
-    const campos = nombresCampos.map(nombre =>
-        document.getElementById(nombre)
-    );
-
-    const formulario = document.getElementById("formularioPerfil");
-    const editar = document.getElementById("editarDatos");
-    const cancelar = document.getElementById("cancelarDatos");
-    const acciones = document.getElementById("accionesFormulario");
-    const notificacion = document.getElementById("notificacion");
-
-    const nombreVisible = document.getElementById("nombreVisible");
-    const correoVisible = document.getElementById("correoVisible");
-    const avatar = document.getElementById("avatarIniciales");
-
-    if (
-        !formulario || !editar || !cancelar ||
-        !acciones || !notificacion ||
-        !nombreVisible || !correoVisible ||
-        !avatar || campos.some(campo => !campo)
-    ) {
-        console.error("Faltan elementos del perfil en el HTML.");
-        return;
+// Pantalla "Mi perfil": edición y guardado
+class PerfilForm {
+    constructor() {
+        this.nombres = ["nombre", "apellido", "correo", "telefono", "ciudad", "pais"];
+        this.campos = this.nombres.map(id => document.getElementById(id));
+        this.formulario = document.getElementById("formularioPerfil");
+        this.editar = document.getElementById("editarDatos");
+        this.cancelar = document.getElementById("cancelarDatos");
+        this.acciones = document.getElementById("accionesFormulario");
+        this.notificacion = document.getElementById("notificacion");
+        this.nombreVisible = document.getElementById("nombreVisible");
+        this.correoVisible = document.getElementById("correoVisible");
+        this.avatar = document.getElementById("avatarIniciales");
+        this.claveLocal = "alquilerExpressPerfilDemo";
+        this.clienteId = window.datos.clienteId();
+        this.perfil = {
+            nombre: "", apellido: "", correo: "",
+            telefono: "", ciudad: "", pais: "Honduras"
+        };
     }
 
-    const valoresIniciales = {
-        nombre: "",
-        apellido: "",
-        correo: "",
-        telefono: "",
-        ciudad: "",
-        pais: "Honduras"
-    };
+    iniciar() {
+        this.cargarLocal();
+        this.mostrar();
+        this.modoEdicion(false);
+        this.escuchar();
 
-    let datos = { ...valoresIniciales };
-    let temporizador;
+        if (this.clienteId) this.cargarDelServidor();
+        if (window.lucide) window.lucide.createIcons();
+    }
 
-    // Recuperar datos guardados
-    try {
-        const guardados = JSON.parse(
-            localStorage.getItem(clave) || "null"
-        );
+    cargarLocal() {
+        const guardado = window.datos.leer(this.claveLocal, null);
+        if (!guardado) return;
 
-        if (guardados && typeof guardados === "object") {
-            nombresCampos.forEach(nombre => {
-                if (typeof guardados[nombre] === "string") {
-                    datos[nombre] = guardados[nombre];
+        this.nombres.forEach(nombre => {
+            if (typeof guardado[nombre] === "string") {
+                this.perfil[nombre] = guardado[nombre];
+            }
+        });
+    }
+
+    async cargarDelServidor() {
+        try {
+            const cliente = await window.api.obtenerCliente(this.clienteId);
+            this.nombres.forEach(nombre => {
+                if (typeof cliente[nombre] === "string") {
+                    this.perfil[nombre] = cliente[nombre];
                 }
             });
-        }
-    } catch (error) {
-        console.warn("No se pudieron recuperar los datos.");
-    }
-
-    // Mostrar datos en el formulario
-    function rellenarFormulario() {
-        campos.forEach(campo => {
-            campo.value = datos[campo.name] || "";
-        });
-    }
-
-    // Actualizar nombre, correo e iniciales
-    function actualizarPortada() {
-
-        const nombreCompleto = [
-            datos.nombre,
-            datos.apellido
-        ].filter(Boolean).join(" ").trim();
-
-        nombreVisible.textContent = nombreCompleto || "Tu nombre";
-
-        correoVisible.textContent =
-            datos.correo || "Agrega tu correo electrónico";
-
-        const iniciales = [
-            datos.nombre,
-            datos.apellido
-        ]
-        .filter(parte => parte.trim())
-        .map(parte => parte.trim().charAt(0).toUpperCase())
-        .join("");
-
-        avatar.textContent = iniciales || "AE";
-    }
-
-    // Activar o desactivar edición
-    function modoEdicion(estaEditando) {
-
-        campos.forEach(campo => {
-            campo.readOnly = !estaEditando;
-        });
-
-        editar.hidden = estaEditando;
-        acciones.hidden = !estaEditando;
-
-        if (estaEditando) {
-            document.getElementById("nombre").focus();
+            this.mostrar();
+        } catch (error) {
+            console.warn("Perfil en modo local:", error.message);
         }
     }
 
-    // Mostrar notificaciones
-    function mostrarMensaje(mensaje) {
+    mostrar() {
+        this.campos.forEach(campo => {
+            campo.value = this.perfil[campo.name] || "";
+        });
 
-        clearTimeout(temporizador);
+        this.nombreVisible.textContent =
+            [this.perfil.nombre, this.perfil.apellido].filter(Boolean).join(" ") || "Tu nombre";
 
-        notificacion.textContent = mensaje;
-        notificacion.hidden = false;
+        this.correoVisible.textContent = this.perfil.correo || "Agrega tu correo electrónico";
 
-        temporizador = setTimeout(() => {
-            notificacion.hidden = true;
+        const iniciales = [this.perfil.nombre, this.perfil.apellido]
+            .filter(Boolean)
+            .map(parte => parte.charAt(0).toUpperCase())
+            .join("");
+
+        this.avatar.textContent = iniciales || "AE";
+    }
+
+    modoEdicion(editando) {
+        this.campos.forEach(campo => {
+            campo.readOnly = !editando;
+        });
+
+        const pais = document.getElementById("pais");
+        if (pais) pais.disabled = !editando;
+
+        this.editar.hidden = editando;
+        this.acciones.hidden = !editando;
+        if (editando) this.campos[0].focus();
+    }
+
+    avisar(texto) {
+        this.notificacion.textContent = texto;
+        this.notificacion.hidden = false;
+        clearTimeout(this.temporizador);
+        this.temporizador = setTimeout(() => {
+            this.notificacion.hidden = true;
         }, 4000);
     }
 
-    // Botón editar
-    editar.addEventListener("click", () => {
-        modoEdicion(true);
-    });
+    escuchar() {
+        this.editar.addEventListener("click", () => this.modoEdicion(true));
 
-    // Botón cancelar
-    cancelar.addEventListener("click", () => {
-        rellenarFormulario();
-        modoEdicion(false);
-    });
-
-    // Guardar cambios
-    formulario.addEventListener("submit", evento => {
-
-        evento.preventDefault();
-
-        if (!formulario.reportValidity()) {
-            return;
-        }
-
-        const nuevosDatos = {};
-
-        campos.forEach(campo => {
-            nuevosDatos[campo.name] = campo.value.trim();
+        this.cancelar.addEventListener("click", () => {
+            this.mostrar();
+            this.modoEdicion(false);
         });
 
-        try {
-            localStorage.setItem(
-                clave,
-                JSON.stringify(nuevosDatos)
-            );
+        this.formulario.addEventListener("submit", evento => this.guardar(evento));
 
-            datos = nuevosDatos;
-
-            rellenarFormulario();
-            actualizarPortada();
-            modoEdicion(false);
-
-            mostrarMensaje("Los cambios se guardaron correctamente.");
-
-        } catch (error) {
-            mostrarMensaje("No se pudieron guardar los cambios.");
-        }
-    });
-
-    // Inicializar perfil
-    rellenarFormulario();
-    actualizarPortada();
-    modoEdicion(false);
-
-    if (window.lucide) {
-        window.lucide.createIcons();
+        document.querySelectorAll('a[href="inicio.html"]').forEach(enlace => {
+            enlace.addEventListener("click", () => window.datos.cerrarSesion());
+        });
     }
 
+    async guardar(evento) {
+        evento.preventDefault();
+        if (!this.formulario.reportValidity()) return;
+
+        const nuevo = {};
+        this.campos.forEach(campo => {
+            nuevo[campo.name] = campo.value.trim();
+        });
+
+        const boton = this.formulario.querySelector('button[type="submit"]');
+        let enServidor = false;
+
+        if (this.clienteId) {
+            boton.disabled = true;
+            try {
+                const actualizado = await window.api.actualizarCliente(this.clienteId, nuevo);
+                window.datos.actualizarSesion(actualizado);
+                enServidor = true;
+            } catch (error) {
+                console.warn("No se pudo actualizar en el servidor:", error.message);
+            }
+            boton.disabled = false;
+        }
+
+        try {
+            window.datos.guardar(this.claveLocal, nuevo);
+            this.perfil = nuevo;
+            this.mostrar();
+            this.modoEdicion(false);
+            this.avisar(enServidor
+                ? "Los cambios se guardaron correctamente."
+                : "Cambios guardados solo en este navegador.");
+        } catch (error) {
+            this.avisar("No se pudieron guardar los cambios.");
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    new PerfilForm().iniciar();
 });
