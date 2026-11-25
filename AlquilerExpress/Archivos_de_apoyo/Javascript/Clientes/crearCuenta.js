@@ -1,138 +1,130 @@
+// Registro de un nuevo cliente
+class RegistroForm {
+    constructor() {
+        this.formulario = document.getElementById("formRegistro");
+        this.nacionalidad = document.getElementById("nacionalidad");
+        this.campoDni = document.getElementById("campoDNI");
+        this.camposExtranjero = document.getElementById("camposExtranjero");
+        this.dni = document.getElementById("dni");
+        this.pasaporte = document.getElementById("pasaporte");
+        this.pais = document.getElementById("pais");
+        this.licencia = document.getElementById("licencia");
+        this.mensaje = document.getElementById("mensajeRegistro");
+        this.boton = this.formulario.querySelector('button[type="submit"]');
+    }
 
-document.addEventListener("DOMContentLoaded", function () {
+    valor(id) {
+        return document.getElementById(id).value.trim();
+    }
 
-    // ELEMENTOS DEL FORMULARIO
+    iniciar() {
+        this.nacionalidad.addEventListener("change", () => this.cambiarNacionalidad());
+        this.formulario.addEventListener("submit", evento => this.enviar(evento));
+    }
 
-    const formulario = document.getElementById("formRegistro");
+    cambiarNacionalidad() {
+        const esHondurena = this.nacionalidad.value === "hondurena";
 
-    const nacionalidad = document.getElementById("nacionalidad");
+        this.campoDni.hidden = !esHondurena;
+        this.dni.disabled = !esHondurena;
+        this.dni.required = esHondurena;
 
-    const campoDNI = document.getElementById("campoDNI");
-    const camposExtranjero = document.getElementById("camposExtranjero");
+        this.camposExtranjero.hidden = esHondurena;
+        this.pasaporte.disabled = esHondurena;
+        this.pasaporte.required = !esHondurena;
+        this.pais.disabled = esHondurena;
+        this.pais.required = !esHondurena;
 
-    const dni = document.getElementById("dni");
-    const pasaporte = document.getElementById("pasaporte");
-    const pais = document.getElementById("pais");
-
-    const licencia = document.getElementById("licencia");
-    const mensaje = document.getElementById("mensajeRegistro");
-
-
-    // CAMBIAR CAMPOS SEGUN NACIONALIDAD
-
-    nacionalidad.addEventListener("change", function () {
-
-        if (nacionalidad.value === "hondurena") {
-
-            // MOSTRAR DNI
-            campoDNI.hidden = false;
-            dni.disabled = false;
-            dni.required = true;
-
-            // OCULTAR PASAPORTE Y PAIS
-            camposExtranjero.hidden = true;
-
-            pasaporte.disabled = true;
-            pasaporte.required = false;
-
-            pais.disabled = true;
-            pais.required = false;
-
-            // LIMPIAR CAMPOS
-            pasaporte.value = "";
-            pais.value = "";
-
-        } else if (nacionalidad.value === "extranjera") {
-
-            // OCULTAR DNI
-            campoDNI.hidden = true;
-            dni.disabled = true;
-            dni.required = false;
-
-            // MOSTRAR PASAPORTE Y PAIS
-            camposExtranjero.hidden = false;
-
-            pasaporte.disabled = false;
-            pasaporte.required = true;
-
-            pais.disabled = false;
-            pais.required = true;
-
-            // LIMPIAR DNI
-            dni.value = "";
-
+        if (esHondurena) {
+            this.pasaporte.value = "";
+            this.pais.value = "";
+        } else {
+            this.dni.value = "";
         }
 
-        mensaje.textContent = "";
+        this.mensaje.textContent = "";
+    }
 
-    });
-
-
-    // VALIDAR EL FORMULARIO
-
-    formulario.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-        mensaje.textContent = "";
-
-        // VALIDAR CAMPOS OBLIGATORIOS
-        if (!formulario.checkValidity()) {
-            formulario.reportValidity();
-            return;
+    validar() {
+        if (!this.formulario.checkValidity()) {
+            this.formulario.reportValidity();
+            return false;
         }
 
-        // VALIDAR DNI HONDUREÑO
-        if (nacionalidad.value === "hondurena") {
+        if (this.nacionalidad.value === "hondurena" && !/^\d{13}$/.test(this.dni.value)) {
+            this.mensaje.textContent = "El DNI debe contener exactamente 13 dígitos.";
+            this.dni.focus();
+            return false;
+        }
 
-            if (!/^[0-9]{13}$/.test(dni.value)) {
-
-                mensaje.textContent =
-                    "El DNI debe contener exactamente 13 dígitos.";
-
-                dni.focus();
-                return;
+        if (this.nacionalidad.value === "extranjera") {
+            if (!this.pasaporte.value.trim()) {
+                this.mensaje.textContent = "Ingrese su número de pasaporte.";
+                this.pasaporte.focus();
+                return false;
+            }
+            if (!this.pais.value) {
+                this.mensaje.textContent = "Seleccione el país de emisión.";
+                this.pais.focus();
+                return false;
             }
         }
 
-        // VALIDAR DATOS DE EXTRANJEROS
-        if (nacionalidad.value === "extranjera") {
-
-            if (pasaporte.value.trim() === "") {
-
-                mensaje.textContent =
-                    "Ingrese su número de pasaporte.";
-
-                pasaporte.focus();
-                return;
-            }
-
-            if (pais.value === "") {
-
-                mensaje.textContent =
-                    "Seleccione el país de emisión.";
-
-                pais.focus();
-                return;
-            }
+        if (!this.licencia.value.trim()) {
+            this.mensaje.textContent = "Ingrese su número de licencia de conducir.";
+            this.licencia.focus();
+            return false;
         }
 
-        // VALIDAR LICENCIA DE CONDUCIR
-        if (licencia.value.trim() === "") {
+        return true;
+    }
 
-            mensaje.textContent =
-                "Ingrese su número de licencia de conducir.";
+    datosCliente() {
+        const extranjero = this.nacionalidad.value === "extranjera";
 
-            licencia.focus();
-            return;
+        return {
+            nombre: this.valor("nombre"),
+            apellido: this.valor("apellido"),
+            sexo: this.valor("sexo"),
+            nacionalidad: this.nacionalidad.value,
+            dni: extranjero ? null : this.dni.value.trim(),
+            pasaporte: extranjero ? this.pasaporte.value.trim() : null,
+            pais: extranjero ? this.pais.value : "Honduras",
+            ciudad: "Tegucigalpa",
+            licencia: this.licencia.value.trim(),
+            telefono: this.valor("telefono"),
+            correo: this.valor("correo"),
+            contrasena: document.getElementById("contrasena").value,
+            aceptarTerminos: document.getElementById("aceptarTerminos").checked
+        };
+    }
+
+    async enviar(evento) {
+        evento.preventDefault();
+        this.mensaje.textContent = "";
+
+        if (!this.validar()) return;
+
+        this.boton.disabled = true;
+        this.boton.textContent = "Creando cuenta...";
+
+        try {
+            await window.api.registrarCliente(this.datosCliente());
+            this.mensaje.textContent = "¡Cuenta creada! Redirigiendo al inicio de sesión...";
+            this.mensaje.classList.add("exito");
+
+            setTimeout(() => {
+                window.location.href = "inicio.html";
+            }, 1500);
+        } catch (error) {
+            this.mensaje.textContent = error.message;
+            this.mensaje.classList.remove("exito");
+            this.boton.disabled = false;
+            this.boton.textContent = "Crear cuenta";
         }
+    }
+}
 
-        // FORMULARIO LISTO PARA CONECTAR AL BACKEND
-
-        mensaje.textContent =
-            "Formulario validado correctamente. " +
-            "Falta conectar el registro con el servidor.";
-
-    });
-
+document.addEventListener("DOMContentLoaded", () => {
+    new RegistroForm().iniciar();
 });
